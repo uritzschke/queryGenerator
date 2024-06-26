@@ -1,7 +1,7 @@
 import { JSONSchemaType } from "ajv";
-import Query from "./query";
-import { Equal, In } from "./filter";
-import DateRestriction from "./dateRestriction";
+import Query from "../model/query";
+import { Equal, In } from "../model/filter";
+import DateRestriction from "../model/dateRestriction";
 
 import Ajv from "ajv";
 

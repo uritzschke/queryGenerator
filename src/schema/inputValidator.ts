@@ -3,8 +3,8 @@ import {
   queryValidator,
   dateRestrictionValidator,
 } from "../schema/validationSchema";
-import Query from "../schema/query";
-import DateRestriction from "../schema/dateRestriction";
+import Query from "../model/query";
+import DateRestriction from "../model/dateRestriction";
 
 export default function validateInput(req: Request) {
   let dateRestriction: DateRestriction | undefined;

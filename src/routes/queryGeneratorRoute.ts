@@ -3,7 +3,7 @@ import validateInput from "../schema/inputValidator";
 import {
   createSqlStringForDateRestriction,
   createSqlStringForQuery,
-} from "./createSqlString";
+} from "../database/createSqlString";
 import runSQLStatement from "../database/db";
 
 const router = Router();

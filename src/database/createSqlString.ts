@@ -1,6 +1,6 @@
-import Query from "../schema/query";
-import { In, Equal } from "../schema/filter";
-import DateRestriction from "../schema/dateRestriction";
+import Query from "../model/query";
+import { In, Equal } from "../model/filter";
+import DateRestriction from "../model/dateRestriction";
 
 /**
  * This is a javascript/ typescript challenge: We cannot simply get the type of an interface with "instanceof".

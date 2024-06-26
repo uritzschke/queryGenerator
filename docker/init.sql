@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS table1 (
     `dateColumn` date NOT NULL);
 
 INSERT INTO table1 (`column1`, `column2`, `column3`, `column4`, `dateColumn`) VALUES
-(1,	2,'abc', 4,	'2000-01-01'),
-(11, 12, 'abc',	14,	'2001-01-01'),
-(21, 22, 'abc',	24,	'2002-01-01'),
-(31, 32, 'def',	34, '2003-01-01');
+(1,	2,'abc', 5,	'2020-01-01'),
+(11, 12, 'abc',	5,	'2021-01-01'),
+(21, 22, 'abc',	5,	'2022-01-01'),
+(21, 22, 'abc',	3,	'2022-01-01'),
+(31, 32, 'def',	5, '2023-01-01');

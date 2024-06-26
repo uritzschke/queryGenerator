@@ -1,7 +1,12 @@
 import { JSONSchemaType } from "ajv";
-import ajvInstance from "./ajvInstance";
 import Query from "./query";
 import { Equal, In } from "./filter";
+import DateRestriction from "./dateRestriction";
+
+import Ajv from "ajv";
+
+const ajvInstance = new Ajv({ allErrors: true });
+const ajvInstance2 = new Ajv({ allErrors: true });
 
 const equalSchema: JSONSchemaType<Equal> = {
   $id: "http://andersanders.de/schemas/QueryGenerator/0.1/equalSchema.json",
@@ -30,7 +35,7 @@ const inSchema: JSONSchemaType<In> = {
   required: ["type", "values", "column"],
 };
 
-const schema: JSONSchemaType<Query> = {
+const querySchema: JSONSchemaType<Query> = {
   $id: "http://andersanders.de/schemas/QueryGenerator/0.1/querySchema.json",
   type: "object",
   properties: {
@@ -48,7 +53,27 @@ const schema: JSONSchemaType<Query> = {
   additionalProperties: false,
 };
 
-export default ajvInstance
+const dateRestrictionSchema: JSONSchemaType<DateRestriction> = {
+  $id: "http://andersanders.de/schemas/QueryGenerator/0.1/dateRestrictionSchema.json",
+  type: "object",
+  properties: {
+    type: { type: "string" },
+    minDate: { type: "string" },
+    maxDate: { type: "string" },
+    column: { type: "string" },
+    child: querySchema,
+  },
+  required: ["type", "column", "child"],
+  additionalProperties: false,
+};
+
+export let queryValidator = ajvInstance
   .addSchema(equalSchema)
   .addSchema(inSchema)
-  .compile(schema);
+  .compile(querySchema);
+
+export let dateRestrictionValidator = ajvInstance2
+  .addSchema(equalSchema)
+  .addSchema(inSchema)
+  .addSchema(querySchema)
+  .compile(dateRestrictionSchema);

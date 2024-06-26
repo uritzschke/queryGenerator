@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from "express";
-import queryGeneratorRoutes from "./routes/queryGenerator";
+import queryGeneratorRoutes from "./routes/queryGeneratorRoute";
 
 const app: Express = express();
 

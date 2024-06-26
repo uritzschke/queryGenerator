@@ -1,3 +1,5 @@
+# QueryGenerator
+
 ## Voraussetzungen:
 
 - Docker ist installiert und läuft: https://www.docker.com/products/docker-desktop/
@@ -6,7 +8,7 @@
 
 ## Starten des Projekts:
 
-- Kommandozeile im Projektordner ("QueryGenerator") öffnen
+- Kommandozeile im Projektordner ("QueryGenerator-main") öffnen
 - folgende Befehle eingeben:
 
 | `docker compose up -d` | startet einen Docker-Container mit MariaDB als Datenbank |

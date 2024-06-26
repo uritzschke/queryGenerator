@@ -11,6 +11,7 @@ export default async function queryDatabase(query: Query) {
 
 // This is a javascript/ typescript challenge: We can't simply get the type of an interface with "instanceof".
 // Instead, we have to check for an identifying parameter in the interface to determine it's type.
+// see https://stackoverflow.com/questions/14425568/interface-type-check-with-typescript
 function instanceOfIn(object: any): object is In {
   return "values" in object;
 }

@@ -17,6 +17,7 @@ const equalSchema: JSONSchemaType<Equal> = {
     column: { type: "string" },
   },
   required: ["type", "value", "column"],
+  additionalProperties: false,
 };
 
 const inSchema: JSONSchemaType<In> = {
@@ -26,6 +27,7 @@ const inSchema: JSONSchemaType<In> = {
     type: { type: "string" },
     values: {
       type: "array",
+      minItems: 1,
       items: {
         type: "string",
       },
@@ -33,6 +35,7 @@ const inSchema: JSONSchemaType<In> = {
     column: { type: "string" },
   },
   required: ["type", "values", "column"],
+  additionalProperties: false,
 };
 
 const querySchema: JSONSchemaType<Query> = {

@@ -107,7 +107,6 @@ export function createSqlStringForQuery(query: Query) {
     string += " WHERE " + filterString;
   }
 
-  console.log("Query: " + string);
   return string;
 }
 
@@ -142,6 +141,5 @@ export function createSqlStringForDateRestriction(
     string += dateFilterString;
   }
 
-  console.log("Query: " + string);
   return string;
 }

@@ -1,25 +1,33 @@
-import { Router, Request, Response } from "express";
-const router = Router();
+import { Router, Request, Response, NextFunction } from "express";
 import querySchema from "../schema/querySchema";
 import Query from "../schema/query";
+import queryDatabase from "./queryDatabase";
+import runSQLStatement from "../database/db";
 
-export default router;
+const router = Router();
 
-router.post("/", (req: Request, res: Response) => {
+router.post("/", async (req: Request, res: Response, next: NextFunction) => {
+  let query: Query;
+
   if (querySchema(req.body)) {
-    let query: Query = req.body;
-
-    console.log("req.query.select: " + query.select);
-    console.log("req.query.table: " + query.table);
-    console.log("req.query.type: " + query.type);
-    console.log("req.query.filters: " + query.filters);
-
-    res.status(200);
-    res.send();
+    query = req.body;
   } else {
     const errors = querySchema.errors;
     console.log("Errors: " + errors);
     res.status(400).json(errors);
     res.send();
+    return;
+  }
+
+  try {
+    //let dbResult = await runSQLStatement("SELECT * from table1");
+    let dbResult = await queryDatabase(query);
+    res.status(200);
+    res.send(dbResult);
+  } catch (error) {
+    res.status(400);
+    res.send(error);
   }
 });
+
+export default router;
